@@ -285,7 +285,7 @@ export default function Landing() {
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center gap-2.5 mb-3">
             <div className="w-6 h-6 rounded-md bg-foreground flex items-center justify-center">
-              <span className="text-background text-[10px] font-bold">R</span>
+              <span className="text-background text-[10px] font-bold">T</span>
             </div>
             <span
               className="font-bold text-lg tracking-tight"

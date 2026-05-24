@@ -12,7 +12,7 @@ export function LandingHeader() {
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2.5">
           <div className="w-7 h-7 rounded-lg bg-foreground flex items-center justify-center">
-            <span className="text-background text-xs font-bold">R</span>
+            <span className="text-background text-xs font-bold">T</span>
           </div>
           <span
             className="font-bold text-lg tracking-tight"
