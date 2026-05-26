@@ -2,7 +2,12 @@
 // Requer Node.js v22+ (SQLite nativo)
 'use strict'
 
-require('dotenv').config()
+const fs = require('fs');
+const lines = fs.readFileSync(__dirname + '/.env', 'utf8').split(/\r?\n/);
+lines.forEach(line => {
+  const match = line.match(/^([^=]+)=(.*)$/);
+  if (match) process.env[match[1].trim()] = match[2].trim();
+});
 
 const express    = require('express')
 const cors       = require('cors')
@@ -11,7 +16,6 @@ const jwt        = require('jsonwebtoken')
 const { v4: uuidv4 } = require('uuid')
 const multer     = require('multer')
 const path       = require('path')
-const fs         = require('fs')
 const { DatabaseSync } = require('node:sqlite')
 
 // ─── Config ──────────────────────────────────────────────────────────────────
