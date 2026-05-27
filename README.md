@@ -1,84 +1,145 @@
-# TalentMind
+# 🧠 TalentMind
 
-Plataforma de recrutamento inteligente com análise de currículos por IA.
+> Plataforma inteligente de recrutamento com análise de currículos por IA.
 
-## Requisitos
+TalentMind automatiza a triagem de currículos usando inteligência artificial (Groq + LLaMA 3), gerando rankings automáticos de candidatos, pontuações e análises detalhadas para cada vaga.
 
-- **Node.js v22+** (obrigatório — usa SQLite nativo do Node 22)
+🌐 **Demo ao vivo:** https://talent-mind-eight.vercel.app  
+⚙️ **API:** https://talent-mind.onrender.com
+
+---
+
+## ✨ Funcionalidades
+
+- 📋 **Gestão de Vagas** — Crie e gerencie vagas com descrição, requisitos, localização e tipo de contrato
+- 📄 **Upload de Currículos** — Envio de currículos em PDF com extração automática de texto
+- 🤖 **Análise por IA** — Pontuação de 0 a 100, pontos fortes, pontos fracos, skills e experiência identificados automaticamente
+- 🏆 **Ranking de Candidatos** — Candidatos ordenados automaticamente por score de compatibilidade
+- 👥 **Gestão de Time** — Convide membros da equipe com diferentes níveis de acesso
+- 🌙 **Tema Dark/Light** — Interface com suporte a tema escuro e claro
+- 🔐 **Autenticação JWT** — Login seguro com tokens de acesso
+
+---
+
+## 🛠️ Tecnologias
+
+### Backend
+- **Node.js** (v22+) com Express
+- **SQLite** nativo (Node.js experimental)
+- **Groq API** com modelo LLaMA 3.3 70B
+- **JWT** para autenticação
+- **Multer** para upload de arquivos
+- **pdf-parse** para extração de texto de PDFs
+- **bcryptjs** para hash de senhas
+
+### Frontend
+- **React 19** com TypeScript
+- **Vite** como bundler
+- **Tailwind CSS** para estilização
+- **shadcn/ui** como biblioteca de componentes
+- **React Router DOM** para navegação
+- **TanStack Query** para gerenciamento de estado
+- **Recharts** para gráficos
+- **Lottie** para animações
+
+---
+
+## 🚀 Como Rodar Localmente
+
+### Pré-requisitos
+- Node.js v22 ou superior
 - npm
 
 Verifique sua versão: `node --version`
 
-## Instalação e uso
-
+### 1. Clone o repositório
 ```bash
-# 1. Instalar dependências raiz (concurrently)
-npm install
-
-# 2. Instalar dependências do backend e frontend
-npm run install:all
-
-# 3. Rodar tudo junto
-npm run dev
+git clone https://github.com/MiguelTacchi/Talent-Mind.git
+cd Talent-Mind
 ```
 
-Acesse: **http://localhost:5173**  
-API: **http://localhost:3001**
-
----
-
-## Rodar separado (se preferir)
-
-**Terminal 1 — Backend:**
+### 2. Configure o Backend
 ```bash
 cd backend
 npm install
+```
+
+Crie o arquivo `.env` na pasta `backend` (use UTF-8 sem BOM):
+```env
+GROQ_API_KEY=sua_chave_aqui
+```
+
+> 💡 Obtenha sua chave gratuita em [console.groq.com](https://console.groq.com)
+
+Rode o backend:
+```bash
 npm run dev
 ```
 
-**Terminal 2 — Frontend:**
+O backend estará disponível em `http://localhost:3001`
+
+### 3. Configure o Frontend
 ```bash
-cd frontend
+cd ../frontend
 npm install
 npm run dev
 ```
 
----
-
-## Configurar IA (opcional)
-
-Edite `backend/.env` e adicione sua chave Gemini:
-
-```env
-GEMINI_API_KEY=sua_chave_aqui
-```
-
-Obtenha grátis em: https://aistudio.google.com/apikey
-
-Sem a chave o sistema funciona normalmente — currículos são recebidos e armazenados, mas a pontuação retorna valor padrão.
+O frontend estará disponível em `http://localhost:5173`
 
 ---
 
-## Estrutura
+## 🔑 Logins de Teste
+
+| Perfil | Email | Senha |
+|--------|-------|-------|
+| Site Creator | admin@talentmind.com | admin123 |
+| Company Admin | admin@empresa.com | empresa123 |
+| Company User | usuario@empresa.com | usuario123 |
+
+---
+
+## 🌐 Deploy
+
+| Serviço | URL |
+|---------|-----|
+| Frontend (Vercel) | https://talent-mind-eight.vercel.app |
+| Backend (Render) | https://talent-mind.onrender.com |
+
+> ⚠️ O plano gratuito do Render pode demorar até 50 segundos para responder após inatividade.
+
+---
+
+## 📁 Estrutura do Projeto
 
 ```
-talentmind/
-├── package.json            ← scripts raiz (dev, install:all)
+TalentMind/
 ├── backend/
-│   ├── server.js           ← API Express — Node.js puro, sem TypeScript
-│   ├── .env                ← JWT_SECRET, GEMINI_API_KEY, PORT...
+│   ├── uploads/          # Currículos enviados
+│   ├── database.sqlite   # Banco de dados (criado automaticamente)
+│   ├── server.js         # Servidor Express
 │   └── package.json
-└── frontend/
-    ├── src/
-    │   ├── lib/api.ts            ← cliente HTTP tipado
-    │   ├── contexts/AuthContext.tsx  ← auth JWT real
-    │   └── pages/                ← todas as páginas conectadas à API
-    └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/   # Componentes reutilizáveis
+│   │   ├── pages/        # Páginas da aplicação
+│   │   ├── contexts/     # Contextos React
+│   │   ├── hooks/        # Hooks customizados
+│   │   └── lib/          # Utilitários e API client
+│   └── package.json
+└── README.md
 ```
 
-## Banco de dados
+## 🗄️ Banco de Dados
 
-SQLite em `backend/database.sqlite` — criado automaticamente na primeira execução.  
-Nenhuma configuração extra necessária.
+SQLite em `backend/database.sqlite` — criado automaticamente na primeira execução. Nenhuma configuração extra necessária.
 
 Tabelas: `users`, `jobs`, `resumes`
+
+---
+
+## 👥 Equipe
+
+- **Miguel Tachi**
+- **Luana Cirilo**
+- **Igor Honório**
