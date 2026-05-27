@@ -3,13 +3,8 @@
 'use strict'
 
 const fs = require('fs');
-if (fs.existsSync(__dirname + '/.env')) {
-  const lines = fs.readFileSync(__dirname + '/.env', 'utf8').split(/\r?\n/);
-  lines.forEach(line => {
-    const match = line.match(/^([^=]+)=(.*)$/);
-    if (match) process.env[match[1].trim()] = match[2].trim();
-  });
-}
+require('dotenv').config({ path: __dirname + '/.env' });
+
 const express    = require('express')
 const cors       = require('cors')
 const bcrypt     = require('bcryptjs')
