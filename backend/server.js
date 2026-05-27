@@ -3,7 +3,6 @@
 'use strict'
 
 const fs = require('fs');
-require('dotenv').config({ path: __dirname + '/.env' });
 
 const express    = require('express')
 const cors       = require('cors')
